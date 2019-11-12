@@ -1,5 +1,9 @@
 # anydoor
 Tiny static resource server by node.
 
-## 使用方法
+---
+ 
+### 现无法解决的问题:
+> 1、 createReadStream -> pipe 返回数据中文乱码
+
 
