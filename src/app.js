@@ -3,10 +3,9 @@ const http = require('http');
 const chalk = require('chalk');
 const path = require('path');
 
-// 导入： 自定义文件
-const route = require('./helper/route'); //封装函数
+// 导入： 自定义配置 + 封装
 const conf = require('./config/defaultConfig'); //自定义配置
-
+const route = require('./helper/route'); //封装函数
 
 const server = http.createServer((req, res) => {// 一层回调
     const filePath = path.join(conf.root, req.url); // 合成本地路径 + 请求路径

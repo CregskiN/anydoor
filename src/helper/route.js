@@ -9,8 +9,9 @@ const config = require('../config/defaultConfig');
 const compress = require('./compress'); // 导入 封装的压缩处理
 const mime = require('./mime');
 const range = require('./range');
+const isFresh = require('./cache'); // 判断缓存数据是否新鲜
 
-// 配置本页： promise + 部分模块使用
+// 本页： promise + 部分模块使用
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
 const tplPath = path.join(__dirname, '../template/dir.html'); // html模板配置
@@ -24,6 +25,13 @@ module.exports = async function (req, res, filePath) {
         if (stats.isFile()) {//当访问路径指向文件
             const contentType = mime(filePath); //拼接Content-Type
             res.setHeader('Content-Type', `${contentType}`);
+
+            if (isFresh(stats, req, res)) {
+                res.statusCode = 304;
+                res.end();
+                return;
+            }
+
             let rs;
             const {code, start, end} = range(stats.size, req, res);
             if (code === 200) {
