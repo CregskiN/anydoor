@@ -5,13 +5,13 @@ const Handlebars = require('handlebars');
 const path = require('path');
 
 // 导入： 自定义 配置 + 封装
-const config = require('../config/defaultConfig');
+// const config = require('../config/defaultConfig');
 const compress = require('./compress'); // 导入 封装的压缩处理
 const mime = require('./mime');
 const range = require('./range');
 const isFresh = require('./cache'); // 判断缓存数据是否新鲜
 
-// 本页： promise + 部分模块使用
+// 本页配置： promise + 部分模块使用
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
 const tplPath = path.join(__dirname, '../template/dir.html'); // html模板配置
@@ -19,7 +19,7 @@ const source = fs.readFileSync(tplPath, 'utf-8'); //同步读模板文件,读取
 const template = Handlebars.compile(source.toString()); //.html模板
 
 
-module.exports = async function (req, res, filePath) {
+module.exports = async function (req, res, filePath, config) {
     try {
         const stats = await stat(filePath);
         if (stats.isFile()) {//当访问路径指向文件
