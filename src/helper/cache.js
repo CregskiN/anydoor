@@ -5,7 +5,7 @@ function refreshRes(stats, res) {
     const {maxAge, expires, cacheControl, lastModified, etag} = cache;
 
     if (expires) {
-        res.setHeader('expires', new Date(Date.now() + maxAge * 1000).toUTCString());
+        res.setHeader('Expires', new Date(Date.now() + maxAge * 1000).toUTCString());
     }
 
     if (cacheControl) {

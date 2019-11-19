@@ -11,7 +11,7 @@ const argv = yargs
     .option('h', {
         alias: 'hostname',
         describe: 'host',
-        default: '127.0.0'
+        default: '127.0.0.1'
     })
     .option('d', {
         alias: 'root',
