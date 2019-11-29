@@ -1,11 +1,11 @@
-# anydoor
+# anydoor_cregskin
 Tiny static resource server by node.
 
 ---
  
  ## 安装
 ```
-npm g -i anydoor
+npm g -i anydoor_cregskin
 ```
 
 ## 启动

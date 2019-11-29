@@ -1,6 +1,6 @@
 {
   "name": "anydoor_cregskin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "src/app.js",
   "bin": {
     "anydoor": "bin/anydoor"
@@ -11,5 +11,8 @@
     "handlebars": "^4.5.1",
     "http-server": "^0.11.1",
     "yargs": "^14.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
   }
 }
